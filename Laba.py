@@ -1,12 +1,20 @@
 try:
+    name = input("Запишіть своє прізвище у файл: ").strip()
+    if not name:
+        raise ValueError("Прізвище не може бути порожнім!")
+
+    task = input("Запишіть питання на тему програмування Python: ").strip()
+    if not task:
+        raise ValueError("Питання не може бути порожнім!")
+
     with open('text.txt', 'w') as file:
-        name = str(input("Запишіть своє прізвище у файл: "))
-        file.write("Прізвище: " + name + "\n")
+        file.write(f"Прізвище: {name}\n")
+        file.write(f"Питання: {task}\n")
 
-        task = str(input("Запишіть питання на тему програмування Python: "))
-        file.write("Питання: " + task + "\n")
+    print("Дані успішно записані у файл 'text.txt'!")
 
-    print("Дані успішно записані у файл!")
+except ValueError as ve:
+    print(f"Помилка вводу: {ve}")
 except Exception as e:
     print(f"Сталася помилка: {e}")
-        
+
